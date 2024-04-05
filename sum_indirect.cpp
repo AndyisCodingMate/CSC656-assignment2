@@ -19,7 +19,7 @@ int64_t sum_indirect(uint64_t A[], u_int64_t left, u_int64_t right)
 void 
 setup(int64_t N, uint64_t A[])
 {
-   printf(" inside direct_sum problem_setup, N=%lld \n", N);
+   printf(" inside indirect_sum problem_setup, N=%lld \n", N);
    for (int64_t i = 0; i < N; i++) {
       A[i] = i;
    }

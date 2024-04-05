@@ -36,34 +36,75 @@ code1_time = df[var_names[1]].values.tolist()
 code2_time = df[var_names[2]].values.tolist()
 code3_time = df[var_names[3]].values.tolist()
 
-plt.title("Comparison of 3 Codes")
+# Mflops code:
+code1_mflops = []
+code2_mflops = []
+code3_mflops = []
 
+for x in problem_sizes:
+    for y in code1_time:
+        code1_mflops.append((2*x/1000000)/y)
+
+for x in problem_sizes:
+    for y in code2_time:
+        code2_mflops.append((2*x/1000000)/y)
+
+for x in problem_sizes:
+    for y in code3_time:
+        code3_mflops.append((2*x/1000000)/y)
+
+# Memory Bandwidth code:
+code1_mem_bw = []
+code2_mem_bw = []
+code3_mem_bw = []
+
+for x in problem_sizes:
+    for y in code1_time:
+        code1_mem_bw.append((2*x/1000000)/y)
+
+# Memory Latency code:
+code1_mem_latency = []
+code2_mem_latency = []
+code3_mem_latency = []
+
+
+# Customize x-axis ticks
 xlocs = [i for i in range(len(problem_sizes))]
 
-plt.xticks(xlocs, problem_sizes)
-
-# here, we are plotting the raw values read from the input .csv file, which
-# we interpret as being "time" that maps directly to the y-axis.
-#
-# what if we want to plot MFLOPS instead? How do we compute MFLOPS from
-# time and problem size? You may need to add some code here to compute
-# MFLOPS, then modify the plt.plot() lines below to plot MFLOPS rather than time.
-
-plt.plot(code1_time, "r-o")
-plt.plot(code2_time, "b-x")
-plt.plot(code3_time, "g-^")
-
-#plt.xscale("log")
-#plt.yscale("log")
-
-plt.xlabel("Problem Sizes")
-plt.ylabel("runtime")
-
+# Define legend labels
 varNames = [var_names[1], var_names[2], var_names[3]]
-plt.legend(varNames, loc="best")
 
-plt.grid(axis='both')
+# Plot for Runtime
+plt.figure(figsize=(10, 6))
+plt.title("Comparison of 3 Codes (Runtime)")
+plt.plot(xlocs, runtime, "r-o")
+plt.xticks(xlocs, problem_sizes)
+plt.xlabel("Problem Sizes")
+plt.ylabel("Runtime")
+plt.legend(varNames, loc="best")  # Add legend
+plt.grid(axis='both')  # Enable grid lines
+plt.show()
 
+# Plot for MFLOPS
+plt.figure(figsize=(10, 6))
+plt.title("Comparison of 3 Codes (MFLOPS)")
+plt.plot(xlocs, mflops, "b-x")
+plt.xticks(xlocs, problem_sizes)
+plt.xlabel("Problem Sizes")
+plt.ylabel("MFLOPS")
+plt.legend(varNames, loc="best")  # Add legend
+plt.grid(axis='both')  # Enable grid lines
+plt.show()
+
+# Plot for Memory Bandwidth
+plt.figure(figsize=(10, 6))
+plt.title("Comparison of 3 Codes (Memory Bandwidth)")
+plt.plot(xlocs, memory_bandwidth, "g-^")
+plt.xticks(xlocs, problem_sizes)
+plt.xlabel("Problem Sizes")
+plt.ylabel("Memory Bandwidth")
+plt.legend(varNames, loc="best")  # Add legend
+plt.grid(axis='both')  # Enable grid lines
 plt.show()
 
 # EOF

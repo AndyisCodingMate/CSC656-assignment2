@@ -11,14 +11,17 @@
 void 
 setup(int64_t N, uint64_t A[])
 {
-   printf(" inside sum_vector problem_setup, N=%lld \n", N);
+   printf(" inside direct_sum problem_setup, N=%lld \n", N);
+   for (int64_t i = 0; i < N; i++) {
+      A[i] = i;
+   }
+   return;
 }
-
 int64_t
 sum(int64_t N, uint64_t A[])
 {
    printf(" inside sum_vector perform_sum, N=%lld \n", N);
-
-   return 0;
+   std::vector<uint64_t> v(A, A + N);
+   return std::accumulate(v.begin(), v.end(), 0);
 }
 

@@ -1,0 +1,6 @@
+/home/andy/SFSU/CSC656/sum_harness_instructional/build/CMakeFiles/benchmark.dir
+/home/andy/SFSU/CSC656/sum_harness_instructional/build/CMakeFiles/sum_direct.dir
+/home/andy/SFSU/CSC656/sum_harness_instructional/build/CMakeFiles/sum_vector.dir
+/home/andy/SFSU/CSC656/sum_harness_instructional/build/CMakeFiles/sum_indirect.dir
+/home/andy/SFSU/CSC656/sum_harness_instructional/build/CMakeFiles/edit_cache.dir
+/home/andy/SFSU/CSC656/sum_harness_instructional/build/CMakeFiles/rebuild_cache.dir
